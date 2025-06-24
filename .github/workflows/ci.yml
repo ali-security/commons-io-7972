@@ -6,7 +6,9 @@ jobs:
   ci:
     name: "CI"
     runs-on: ubuntu-latest
-    container: openjdk:8
+    container:
+      image: openjdk:8
+      options: --user 1001
     steps:
       - uses: actions/checkout@v2
       - name: Set up Maven
