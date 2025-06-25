@@ -692,8 +692,12 @@ public class XmlStreamReader extends Reader {
     }
 
     public static final Pattern ENCODING_PATTERN = Pattern.compile(
-            "<\\?xml.*encoding[\\s]*=[\\s]*((?:\".[^\"]*\")|(?:'.[^']*'))",
+    // @formatter:off
+            "^<\\?xml\\s+"
+            + "version\\s*=\\s*(?:(?:\"1\\.[0-9]+\")|(?:'1.[0-9]+'))\\s+"
+            + "encoding\\s*=\\s*((?:\"[A-Za-z]([A-Za-z0-9\\._]|-)*\")|(?:'[A-Za-z]([A-Za-z0-9\\\\._]|-)*'))",
             Pattern.MULTILINE);
+    // @formatter:on
 
     /**
      * Returns the encoding declared in the <?xml encoding=...?>, NULL if none.
